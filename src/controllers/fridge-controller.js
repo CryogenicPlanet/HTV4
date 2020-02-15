@@ -76,7 +76,7 @@ const foodAddFromBarcode = async ( req, res, next ) => {
     try {
         let foodDetails = await foodService.getDetailsFromBarcode(req.body.barcode)
         if(!ControllerUtils.handleServiceResponse(req, res, next, foodDetails))
-        let addFood = await FridgeService.addFood({
+        let addedFood = await FridgeService.addFood({
             fridge_id: req.body.fridge_id,
             user_id: req.body.user_id,
             foodDetails: foodDetails.data,
@@ -85,7 +85,7 @@ const foodAddFromBarcode = async ( req, res, next ) => {
             in_freezer: req.body.in_freezer
         })
 
-        return res.status(200).send(JSON.stringify(addFood.data))
+        return res.status(200).send(JSON.stringify(addedFood.data))
     }
     catch(err) {
         return res.status(500).send('There was an error')

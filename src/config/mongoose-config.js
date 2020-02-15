@@ -2,7 +2,8 @@ import mongoose from 'mongoose'
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    dbName: 'fridge'
 })
 
 mongoose.set('useCreateIndex', true)

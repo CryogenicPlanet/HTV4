@@ -58,7 +58,7 @@ const validateBody = (req, res, next, bodySchema) => {
         }
         
         if(propBody) {
-            let v = prop.validate(propBody)
+            let v = prop.validation(propBody)
             if(v.status != 200) {
                 res.status(v.status).send(v.message)
                 return false

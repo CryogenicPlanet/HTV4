@@ -157,7 +157,7 @@ const foodAddML = async ( req, res, next ) => {
             quantity: 1,
             in_freezer: false,
             owner_id: user._id,
-            fridge_id: 1
+            fridge_id: process.env.FRIDGE_ID
         })
 
         return res.status(200).json(JSON.stringify(food))

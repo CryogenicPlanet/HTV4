@@ -11,6 +11,7 @@ import mongoose from './config/mongoose-config'
 import routes from './routes/routes'
 import limiters from './limiters/limiters'
 
+const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -20,6 +21,10 @@ app.use( (err, req, res, next) => {
         return res.status(400).json('Invalid request')
     }
     return next()
+})
+
+app.get('/api/test', (req, res, next) => {
+	res.status(200).send('success!')
 })
 
 app.use('/api', routes);

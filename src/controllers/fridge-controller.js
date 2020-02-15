@@ -50,22 +50,9 @@ const foodAddBarcodeSchema = {
             validation: validation.isObjectID
         },
         {
-            name: 'name',
-            required: true,
-            validation: validation.isName
-        }, 
-        {
             name: 'expiry',
             required: true,
             validation: validation.isExpiry
-        },
-        {
-            name: 'in_freezer',
-            required: true,
-            validation: (val) => {
-                if(typeof val == 'boolean') return true
-                return false
-            }
         }
     ]
 }
@@ -80,9 +67,9 @@ const foodAddFromBarcode = async ( req, res, next ) => {
             fridge_id: req.body.fridge_id,
             user_id: req.body.user_id,
             foodDetails: foodDetails.data,
-            name: req.body.name,
+            name: foodDetails.data.foods[0].foodName,
             expiry: req.body.expiry,
-            in_freezer: req.body.in_freezer
+            in_freezer: false
         })
 
         return res.status(200).send(JSON.stringify(addedFood.data))

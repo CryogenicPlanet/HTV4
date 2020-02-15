@@ -75,7 +75,7 @@ const foodAddFromBarcode = async ( req, res, next ) => {
 
     try {
         let foodDetails = await foodService.getDetailsFromBarcode(req.body.barcode)
-        if(!ControllerUtils.handleServiceResponse(req, res, next, foodDetails))
+        if(!ControllerUtils.handleServiceResponse(req, res, next, foodDetails)) return
         let addedFood = await FridgeService.addFood({
             fridge_id: req.body.fridge_id,
             user_id: req.body.user_id,

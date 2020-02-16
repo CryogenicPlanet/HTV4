@@ -68,12 +68,10 @@ const foodAddFromBarcode = async ( req, res, next ) => {
             fridge_id: req.body.fridge_id,
             user_id: req.body.user_id,
             foodDetails: foodDetails.data,
-            name: foodDetails.data.foods[0].foodName,
+            name: foodDetails.data.foods[0].food_name,
             expiry: req.body.expiry,
             in_freezer: false
         })
-
-        console.log(foodDetails.data.foods[0].foodName)
 	
         if(!ControllerUtils.handleServiceResponse(req, res, next, addedFood)) return
 	return res.status(200).send(JSON.stringify(addedFood.data))

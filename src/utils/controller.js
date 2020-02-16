@@ -4,13 +4,12 @@ const handleServiceResponse = (req, res, next, serviceResponse) => {
     console.log(serviceResponse)
     if(serviceResponse.expected) {
         res.status(serviceResponse.status).send(serviceResponse.msg)
-        return false
     }
     else {
         res.status(500).send('There was an internal error processing your request.')
-        return false
     }
 
+    return false
 }
 
 

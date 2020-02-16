@@ -1,9 +1,9 @@
 import { Router } from 'express'
 import fridgeController from '../../controllers/fridge-controller'
-import foodService from '../services/food-service'
+import foodService from '../../services/food-service'
 
-import User from '../models/user-model'
-import Food from '../models/food-model'
+import User from '../../models/user-model'
+import Food from '../../models/food-model'
 
 const router = Router()
 

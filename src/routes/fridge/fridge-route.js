@@ -39,6 +39,7 @@ router.get('/handshake', async (req, res, next) => {
         return res.status(200).json(JSON.stringify(food))
     }
     catch(err) {
+        console.log(err)
         res.status(500).send('There was an error')
     }
 

@@ -16,15 +16,15 @@ router.get('/handshake', async (req, res, next) => {
 
     try {
         let person = await axios.get('http://localhost:5000/getFace')
-        let food = await axios.get('http://localhost:5000/getFood')
+        let food1 = await axios.get('http://localhost:5000/getFood')
 
         let user = await User.findOne({name: person})
-        let foodDetails = await foodService.getDetails(req.body.foodName)
+        let foodDetails = await foodService.getDetails(food1)
 
         let now = new Date()
         now.setDate(now.getDate() + foodDetails.expiryDays)
         let food = await Food.create({
-            name: req.body.foodName,
+            name: food1,
             expiry: now,
             quantity: 1,
             in_freezer: false,

@@ -24,7 +24,7 @@ router.get('/handshake', async (req, res, next) => {
         console.log("FOOD:")
         console.log(food1)
         person.data = person.data.charAt(0).toUpperCase() + person.data.slice(1);
-        let user = await User.findOne({name: new RegExp('^'+ person.data +'$', "i")})
+        let user = await User.findOne({name: person.data})
         let foodDetails = await foodService.getDetails(food1.data)
 
         let now = new Date()

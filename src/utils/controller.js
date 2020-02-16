@@ -1,6 +1,7 @@
 
 const handleServiceResponse = (req, res, next, serviceResponse) => {
     if(serviceResponse.status == 200) return true;
+    console.log(serviceResponse)
     if(serviceResponse.expected) {
         res.status(serviceResponse.status).send(serviceResponse.msg)
         return false

@@ -1,20 +1,12 @@
 import mongoose from 'mongoose'
 
 
-const FridgeOwnerID = new mongoose.Schema({
-	user_id: {
-	type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
-	}
-})
-
 
 const FridgeSchema = new mongoose.Schema({
-    owners: {
-        type: [FridgeOwnerID],
-        required: true
-    }
+    owners: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    }]
 })
 
 FridgeSchema.virtual('food', {

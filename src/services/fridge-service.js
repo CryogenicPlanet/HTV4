@@ -5,7 +5,7 @@ import ServiceUtils from '../utils/service'
 const getFridgeInfo = async (id) => {
 
     try {
-        let fridge = await Fridge.findOne({_id : id}).populate('food').populate('owners_list')
+        let fridge = await Fridge.findOne({_id : id}).populate('food')
         if(!fridge) return {
             status: 404,
             message: "Not found"

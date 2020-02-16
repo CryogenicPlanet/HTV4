@@ -6,10 +6,7 @@ const getFridgeInfo = async (id) => {
 
     try {
         let fridge = await Fridge.findOne({_id : id}).populate({
-            path: 'food',
-            populate: {
-                path: 'owners',
-                model: 'user'
+            path: 'owners',
             }
         })
         if(!fridge) return {

@@ -33,6 +33,10 @@ app.get('/api/test', (req, res, next) => {
 	res.status(200).send('success!')
 })
 
+app.get('/api/handshake', (req, res, next) => {
+    res.status(200).send('success')
+})
+
 app.use('/api', routes);
 
 app.use('/api', limiters.apiLimiter)

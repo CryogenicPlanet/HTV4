@@ -4,27 +4,23 @@ import ServiceUtils from '../utils/service'
 
 const getFridgeInfo = async (id) => {
 
-    let fridge = await Fridge.findOne({_id: id}).exec( (err, docs) => {
-        if(err) {
-            console.log(err);
-            if (err.code == 11000) return {status: 409, msg: "conflict with: " + this.model.name, expected: true}
-            return {expected: false}
+    try {
+        let fridge = await Fridge.findOne({_id : id}).populate('food').populate('users')
+        if(fridge) return {
+            status: 404,
+            message: "Not found"
         }
-        Fridge.populate(docs, { path: 'owners' }, (err, _docs) => {
-            if(err) {
-                console.log(err);
-                if (err.code == 11000) return {status: 409, msg: "conflict with: " + this.model.name, expected: true}
-                return {expected: false}
-            }
-            
-            return {
-                status: 200,
-                data: fridge
-            }
-        })
-    })
-    
 
+        return {
+            status: 200,
+            data: fridge
+        }
+    }
+    catch(err) {
+        console.log(err)
+        if (err.code == 11000) return {status: 409, msg: "conflict with: " + this.model.name, expected: true}
+        return {expected: false}
+    }
 }
 
 const addFood = async (data) => {

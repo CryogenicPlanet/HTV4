@@ -19,7 +19,7 @@ const get = async ( req, res, next ) => {
     if(!validation.validateBody(req, res, next, getBodySchema)) return
 
     try {
-        let getFridge = await FridgeService.getFridgeInfo(req.body.fridge_id)
+        let getFridge = await FridgeService.getFrisdgeInfo(req.body.fridge_id)
         if(!ControllerUtils.handleServiceResponse(req, res, next, getFridge)) return
 
         return res.status(200).json({

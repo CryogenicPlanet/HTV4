@@ -30,7 +30,7 @@ router.get('/handshake', async (req, res, next) => {
         let now = new Date()
         now.setDate(now.getDate() + foodDetails.expiryDays)
         let food = await Food.create({
-            name: food1,
+            name: food1.data,
             expiry: now,
             quantity: 1,
             in_freezer: false,

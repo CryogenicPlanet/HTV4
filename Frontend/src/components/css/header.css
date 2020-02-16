@@ -1,0 +1,18 @@
+.header {
+	width: 100%;
+  min-height: 10vh;
+	/* background-color: #1F8276; */
+	padding-inline-start: 5%;
+	padding-block-start: 2%;
+}
+
+.header-icon {
+	color: #ffffff;
+	height: 5vmin;
+	margin-left: 50px;
+}
+
+.HeaderFont{
+	color: #fff;
+}
+.HeaderFont {}

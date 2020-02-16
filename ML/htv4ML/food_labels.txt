@@ -1,0 +1,6 @@
+banana
+cheese
+egg
+bread
+apple
+onion

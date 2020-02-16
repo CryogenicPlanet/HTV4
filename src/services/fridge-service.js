@@ -50,8 +50,7 @@ const addFood = async (data) => {
 
 const removeFood = async (foodID) => {
     try {
-        let remove = await Food.remove({_id: foodID})
-
+        let remove = await Food.deleteOne({_id: foodID})
         return {
             status: 200
         }

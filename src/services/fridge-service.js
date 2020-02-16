@@ -1,13 +1,13 @@
 import Fridge from '../models/fridge-model'
 import Food from '../models/food-model'
 import ServiceUtils from '../utils/service'
+import User from '../models/user-model'
 
 const getFridgeInfo = async (id) => {
 
     try {
-        let fridge = await Fridge.findOne({_id: id})
-        let fridgeO = fridge.populate('owners')
-        let fridgeF = fridge.populate('food')
+        let fridge = await Fridge.findOne({_id: id}).populate('food')
+        let owners = await Fridge.findOne({_id: id}).populate('owner')
         if(!fridge) return {
             status: 404,
             message: "Not found"
@@ -16,8 +16,8 @@ const getFridgeInfo = async (id) => {
         return {
             status: 200,
             data: {
-                owners: fridgeO.owners,
-                food: fridgeF.food
+                owners: owners.owners,
+                food: fridge.food
             }
         }
     }

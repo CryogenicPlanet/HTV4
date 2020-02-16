@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import fridgeController from '../../controllers/fridge-controller'
 import foodService from '../../services/food-service'
+import axios from 'axios'
 
 import User from '../../models/user-model'
 import Food from '../../models/food-model'

@@ -71,8 +71,9 @@ const foodAddFromBarcode = async ( req, res, next ) => {
             expiry: req.body.expiry,
             in_freezer: false
         })
-
-        return res.status(200).send(JSON.stringify(addedFood.data))
+	
+        if(!ControllerUtils.handleServiceResponse(req, res, next, addedFood)) return
+	return res.status(200).send(JSON.stringify(addedFood.data))
     }
     catch(err) {
         return res.status(500).send('There was an error')

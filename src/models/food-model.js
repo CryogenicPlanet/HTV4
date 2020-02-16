@@ -30,11 +30,11 @@ const FoodSchema = new mongoose.Schema({
         default: false
     },
     quantity: {
-        type: AnySchema,
+        type: mongoose.Schema.Types.Mixed,
         required: true
     },
     quantity_type: {
-        type: AnySchema,
+        type: mongoose.Schema.Types.Mixed,
         required: false
     }
 })

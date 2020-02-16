@@ -38,6 +38,7 @@ const addFood = async (data) => {
         }
     }
     catch(err) {
+	console.log(err)
         if (err.code == 11000) return {status: 409, msg: "conflict with: " + this.model.name, expected: true}
         return {expected: false}
     }
@@ -52,6 +53,7 @@ const removeFood = async (foodID) => {
         }
     }
     catch(err) {
+	console.log(err)
         if (err.code == 11000) return {status: 409, msg: "conflict with: " + this.model.name, expected: true}
         return {expected: false}
     }

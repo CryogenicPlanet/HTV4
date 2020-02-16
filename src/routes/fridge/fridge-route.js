@@ -18,8 +18,8 @@ router.get('/handshake', async (req, res, next) => {
         let person = await axios.get('http://localhost:5000/getFace')
         let food1 = await axios.get('http://localhost:5000/getFood')
 
-        let user = await User.findOne({name: person})
-        let foodDetails = await foodService.getDetails(food1)
+        let user = await User.findOne({name: person.data})
+        let foodDetails = await foodService.getDetails(food1.data)
 
         let now = new Date()
         now.setDate(now.getDate() + foodDetails.expiryDays)

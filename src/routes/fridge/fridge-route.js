@@ -18,6 +18,10 @@ router.get('/handshake', async (req, res, next) => {
         let person = await axios.get('http://localhost:5000/getFace')
         let food1 = await axios.get('http://localhost:5000/getFood')
 
+        console.log("PERSON:")
+        console.log(person)
+        console.log("FOOD:")
+        console.log(food1)
         let user = await User.findOne({name: person.data})
         let foodDetails = await foodService.getDetails(food1.data)
 
@@ -38,7 +42,6 @@ router.get('/handshake', async (req, res, next) => {
         res.status(500).send('There was an error')
     }
 
-    res.status(200).send('success')
 })
 
 export default router

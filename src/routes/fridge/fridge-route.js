@@ -1,5 +1,9 @@
 import { Router } from 'express'
 import fridgeController from '../../controllers/fridge-controller'
+import foodService from '../services/food-service'
+
+import User from '../models/user-model'
+import Food from '../models/food-model'
 
 const router = Router()
 
@@ -7,5 +11,34 @@ router.post('/', fridgeController.get)
 router.post('/food/add/barcode', fridgeController.foodAddFromBarcode)
 router.post('/food/add/', fridgeController.foodAddML)
 router.post('/food/remove', fridgeController.foodRemove)
+
+router.get('/handshake', async (req, res, next) => {
+
+    try {
+        let person = await axios.get('http://localhost:5000/getFace')
+        let food = await axios.get('http://localhost:5000/getFood')
+
+        let user = await User.findOne({name: person})
+        let foodDetails = await foodService.getDetails(req.body.foodName)
+
+        let now = new Date()
+        now.setDate(now.getDate() + foodDetails.expiryDays)
+        let food = await Food.create({
+            name: req.body.foodName,
+            expiry: now,
+            quantity: 1,
+            in_freezer: false,
+            owner_id: user._id,
+            fridge_id: process.env.FRIDGE_ID
+        })
+
+        return res.status(200).json(JSON.stringify(food))
+    }
+    catch(err) {
+        res.status(500).send('There was an error')
+    }
+
+    res.status(200).send('success')
+})
 
 export default router

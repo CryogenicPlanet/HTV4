@@ -7,6 +7,7 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 
 import mongoose from './config/mongoose-config'
+import axios from 'axios'
 
 import routes from './routes/routes'
 import limiters from './limiters/limiters'
@@ -34,6 +35,8 @@ app.get('/api/test', (req, res, next) => {
 })
 
 app.get('/api/handshake', (req, res, next) => {
+
+
     res.status(200).send('success')
 })
 

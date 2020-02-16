@@ -24,7 +24,7 @@ const getDetailsFromBarcode = async (barcode) => {
     }
 }
 
-const exipry = {
+const expiry = {
     apple: 30,
     banana: 6,
     egg: 35,

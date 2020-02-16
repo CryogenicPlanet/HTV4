@@ -28,6 +28,7 @@ const get = async ( req, res, next ) => {
         })
     }
     catch(err) {
+	console.log(err)
         return res.status(500).send('There was an error')
     }
 }
@@ -76,6 +77,7 @@ const foodAddFromBarcode = async ( req, res, next ) => {
 	return res.status(200).send(JSON.stringify(addedFood.data))
     }
     catch(err) {
+	console.log(err)
         return res.status(500).send('There was an error')
     }
 }
@@ -107,6 +109,7 @@ const foodRemove = async ( req, res, next ) => {
         let removal = await FridgeService.removeFood(req.body.food_id)
     }
     catch(err) {
+	console.log(err)
         return res.status(500).send('There was an error')
     }
 }
@@ -151,6 +154,7 @@ const foodAddML = async ( req, res, next ) => {
         return res.status(200).json(JSON.stringify(food))
     }
     catch(err) {
+	console.log(err)
         return res.status(500).send('There was an error')
     }
 }

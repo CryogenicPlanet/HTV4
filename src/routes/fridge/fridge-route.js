@@ -23,7 +23,7 @@ router.get('/handshake', async (req, res, next) => {
         console.log(person)
         console.log("FOOD:")
         console.log(food1)
-        let user = await User.findOne({name: person.data})
+        let user = await User.findOne({name: /person.data/i})
         let foodDetails = await foodService.getDetails(food1.data)
 
         let now = new Date()

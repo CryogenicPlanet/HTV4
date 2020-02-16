@@ -7,7 +7,7 @@ const getFridgeInfo = async (id) => {
 
     try {
         let fridge = await Fridge.findOne({_id: id}).populate('food')
-        let owners = await Fridge.findOne({_id: id}).populate('owner')
+        let owners = await Fridge.findOne({_id: id}).populate('owners')
         if(!fridge) return {
             status: 404,
             message: "Not found"
